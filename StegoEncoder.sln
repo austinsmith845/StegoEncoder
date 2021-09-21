@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StegoEncoder", "StegoEncoder\StegoEncoder.csproj", "{3B44807D-B540-4B65-908E-256505C8E8EA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3B44807D-B540-4B65-908E-256505C8E8EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B44807D-B540-4B65-908E-256505C8E8EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B44807D-B540-4B65-908E-256505C8E8EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B44807D-B540-4B65-908E-256505C8E8EA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {92C6014C-4FF1-4415-BCE1-553D9F143E53}
+	EndGlobalSection
+EndGlobal
