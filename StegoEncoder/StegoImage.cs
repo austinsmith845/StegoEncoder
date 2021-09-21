@@ -25,7 +25,17 @@ namespace StegoEncoder
             _image = img;
             _messageToEncode = message;
         }
-        
 
+        public bool EncodeImage(StegoEncoding encoding)
+        {
+            ICommand encoder = new StegoEncoderFactory().CreateEndcoder(encoding, _image, _messageToEncode);
+            encoder.Execute();
+            return true;
+        }
+
+        ~StegoImage()
+        {
+            _image.Dispose();
+        }
     }
 }

@@ -35,6 +35,7 @@ namespace StegoEncoder
             Bitmap image = reader.ReadImageFile(path);
 
             StegoImage stegoImage = new StegoImage(image, message);
+            stegoImage.EncodeImage(StegoEncoding.LSB);
            
         }
     }
