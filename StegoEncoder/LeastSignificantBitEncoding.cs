@@ -10,7 +10,7 @@ namespace StegoEncoder
     /// <summary>
     /// This class will implement the least significat bit algorithm of steganography
     /// </summary>
-    public class LeastSignificantBitEncoding : ICommand
+    public class LeastSignificantBitEncoding : IEncodeCommand
     {
         private Bitmap _img;
         private string _message;
@@ -31,23 +31,52 @@ namespace StegoEncoder
 
         private byte[] GetBytes()
         {
-            byte[] imageBytes;
-            using (MemoryStream stream = new MemoryStream())
+            byte[] imageBytes = new byte[(_img.Height * _img.Width) * 3];
+
+            int k = 0;
+            for(int i = 0; i < _img.Height; i++ )
             {
-                _img.Save(stream, ImageFormat.Png);
-                imageBytes = stream.ToArray();
+                for(int j = 0; j < _img.Width; j++)
+                {
+                    Color col = _img.GetPixel(j, i);
+                    imageBytes[k++] = col.R;
+                    imageBytes[k++] = col.G;
+                    imageBytes[k++] = col.B;
+                }
             }
+            
             return imageBytes;
         }
-        public void Execute()
+        public byte[] Execute()
         {
             int i = 0;
+           
+          
             foreach(char c in _message)
             {
                 byte[] charBits = GetBits((byte)c);
-                //Add in LSB insertion here
+                foreach(byte b in charBits)
+                {
+                    byte[] picBits = GetBits(bytes[i]);
+                    picBits[picBits.Length - 1] = b;
+                    bytes[i] = parseBits(picBits);
+                    i++;
+                }
             }
+            return bytes;
             
+        }
+
+        private byte parseBits(byte[] bits)
+        {
+            byte sum = 0;
+            int exponent = bits.Length - 1;
+            foreach (byte b in bits)
+            {
+                sum += (byte)(b * (byte)Math.Pow(2, exponent));
+                exponent -= 1;
+            }
+            return sum;
         }
 
         private byte[] GetBits(byte b)

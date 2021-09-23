@@ -4,8 +4,8 @@ using System.Text;
 
 namespace StegoEncoder
 {
-    public interface ICommand
+    public interface IEncodeCommand
     {
-        void Execute();
+        byte[] Execute();
     }
 }
